@@ -1,32 +1,26 @@
-<!--<div class='main-nav'>
-  <nav class='navbar navbar-expand-lg navbar-dark bg-dark d-flex flex-column'>
-      <div class="navbar-header p-0">
-          <a class='navbar-brand' [routerLink]='["/"]'>Home</a>
-          <button type='button' class='navbar-toggler' data-toggle='collapse' data-target='#navbarNav' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
-              <span class='sr-only'>Toggle navigation</span>
-              <span class='navbar-toggler-icon'></span>
-          </button>
-          <div id="navbarNav" class='navbar-collapse collapse p-0' [ngClass]='{ "in": isExpanded }'>
-              <ul class='nav navbar-nav flex-column'>
-                  <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-                      <a [routerLink]='["/"]' class="nav-link" (click)='collapse()'>
-                          <span class='fas fa-home'></span> Home
-                      </a>
-                  </li>
-                  <li class="nav-item" [routerLinkActive]='["link-active"]'>
-                      <a [routerLink]='["/counter"]' class="nav-link" (click)='collapse()'>
-                          <span class='fas fa-sort-amount-up'></span> Counter
-                      </a>
-                  </li>
-                  <li class="nav-item" [routerLinkActive]='["link-active"]'>
-                      <a [routerLink]='["/fetch-data"]' class="nav-link" (click)='collapse()'>
-                          <span class='fas fa-database'></span> Fetch data
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </nav>
-</div>-->
+﻿<mat-card>
+    <img mat-card-image src="../../assets/logo.jpg">
+</mat-card>
+    <nav class="sticky-nav" ngStickyNav>
+        <mat-card>
+
+            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Strona główna</button>
+                <button mat-menu-item>Zdjęcia i relacje</button>
+                <button mat-menu-item>Gdzie gramy</button>
+            </mat-menu>
+            <span class="hide-on-mobiles">
+                <button mat-button>Strona główna</button>
+                <button mat-button>Zdjęcia i relacje</button>
+                <button mat-button>Gdzie gramy</button>
+            </span>
+        </mat-card>
+    </nav>
+<p>łóąę</p>
+
+
+
+
 
 

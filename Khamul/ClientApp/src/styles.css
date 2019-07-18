@@ -17,3 +17,17 @@
 button:focus {
   outline: 0;
 }
+body {
+  width: 1000px;
+  margin: auto;
+}
+@media (max-width: 767px) {
+  .hide-on-mobiles {
+    display: none;
+    margin: 0;
+  }
+  body {
+    color: red;
+    width: 100%;
+  }
+}

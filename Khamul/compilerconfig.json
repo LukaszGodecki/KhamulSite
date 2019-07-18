@@ -2,5 +2,9 @@
   {
     "outputFile": "ClientApp/src/styles.css",
     "inputFile": "ClientApp/src/styles.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/nav-menu/nav-menu.component.css",
+    "inputFile": "ClientApp/src/app/nav-menu/nav-menu.component.less"
   }
 ]
