@@ -20,6 +20,7 @@ button:focus {
 body {
   width: 1000px;
   margin: auto;
+  background-color: lightgray;
 }
 @media (max-width: 767px) {
   .hide-on-mobiles {
