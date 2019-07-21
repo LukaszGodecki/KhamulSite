@@ -1,0 +1,19 @@
+﻿<mat-card class="custom-image">
+    <img mat-card-image src="../../assets/logo.jpg">
+</mat-card>
+
+<nav class="sticky-nav" ngStickyNav>
+    <mat-card class="custom-menu">
+
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/home']">Strona główna</button>
+            <button mat-menu-item [routerLink]="['/pictures-reports']">Zdjęcia i relacje</button>
+        </mat-menu>
+        <span class="hide-on-mobiles">
+            <button mat-button [routerLink]="['/home']">Strona główna</button>
+            <button mat-button [routerLink]="['/pictures-reports']">Zdjęcia i relacje</button>
+        </span>
+
+    </mat-card>
+</nav>

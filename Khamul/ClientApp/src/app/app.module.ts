@@ -3,33 +3,33 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { MaterialModule } from './material.module';
 import { StickyNavModule } from 'ng2-sticky-nav';
-import { FooterComponent } from './footer/footer.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AppRoutingModule } from './components/app-routing.module';
+import { HomeModule } from './components/pages/home/home.module';
+import { PicturesReportsModule } from './components/pages/pictures-reports/pictures-reports.module';
+import { MaterialModule } from './shared/material.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavMenuComponent,
-        HomeComponent,
+        AppComponent,
+        NavMenuComponent,
         FooterComponent
   ],
   imports: [
-      MaterialModule,
-      BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         BrowserAnimationsModule,
         HttpClientModule,
-      FormsModule,
-        StickyNavModule,
-        RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' }
-    ])
-  ],
+        FormsModule,
+      StickyNavModule,
+      AppRoutingModule,
+      HomeModule,
+      PicturesReportsModule,
+      MaterialModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
