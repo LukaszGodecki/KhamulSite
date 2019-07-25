@@ -1,9 +1,4 @@
 <div class="flex-container">
-    <div class="flex-item"><app-album-card></app-album-card></div>
-    <div class="flex-item"><app-album-card></app-album-card></div>
-    <div class="flex-item"><app-album-card></app-album-card></div>
-    <div class="flex-item"><app-album-card></app-album-card></div>
-    <div class="flex-item"><app-album-card></app-album-card></div>
-    <div class="flex-item"><app-album-card></app-album-card></div>
+    <div class="flex-item" *ngFor="let album of albums$ | async"><app-album-card [album]='album'></app-album-card></div>
 </div>
 <div style="margin:50px"></div>

@@ -6,5 +6,13 @@
   {
     "outputFile": "ClientApp/src/app/nav-menu/nav-menu.component.css",
     "inputFile": "ClientApp/src/app/nav-menu/nav-menu.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/shared/album-card/album-card.component.css",
+    "inputFile": "ClientApp/src/app/shared/album-card/album-card.component.less"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/pages/home/home.component.css",
+    "inputFile": "ClientApp/src/app/components/pages/home/home.component.less"
   }
 ]
