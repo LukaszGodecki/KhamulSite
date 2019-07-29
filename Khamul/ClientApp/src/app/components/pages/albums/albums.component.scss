@@ -1,0 +1,16 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+@media all and (max-width: 1000px) {
+    .flex-container {
+        justify-content: flex-start;
+    }
+}
+
+.flex-item {
+    margin-top: 20px;
+}

@@ -8,12 +8,50 @@
         <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item [routerLink]="['/home']">Strona główna</button>
-            <button mat-menu-item [routerLink]="['/pictures-reports']">Zdjęcia i relacje</button>
+            <button mat-menu-item [routerLink]="['/albums']">Albumy</button>
         </mat-menu>
         <span class="hide-on-mobiles">
             <button mat-button [routerLink]="['/home']">Strona główna</button>
-            <button mat-button [routerLink]="['/pictures-reports']">Zdjęcia i relacje</button>
+            <button mat-button [routerLink]="['/albums']">Albumy</button>
         </span>
+        <span style="float:right">
+            <button mat-button (click)="showSearchPanel()">
+                <i class="material-icons" *ngIf="!isSearchPanelVisible">
+                    search
+                </i>
+                <i class="material-icons" *ngIf="isSearchPanelVisible">
+                    clear
+                </i>
+            </button>
+        </span>
+        
+        
+        <div class="flex-container" *ngIf="isSearchPanelVisible">
+            <mat-form-field class="flex-item">
+                <mat-select placeholder="Wydawnictwo">
+                    <mat-option value="option">Option</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="flex-item">
+                <mat-select placeholder="Gracz">
+                    <mat-option value="option">Option</mat-option>
+                </mat-select>
+            </mat-form-field>            
+            <mat-form-field class="flex-item">
+                <input matInput [matDatepicker]="startPicker" placeholder="Start date">
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="flex-item">
+                <input matInput [matDatepicker]="endPicker" placeholder="End date">
+                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="flex-item">
+                <input matInput placeholder="Szukaj" />
+            </mat-form-field>
+        </div>
 
     </mat-card>
+    
 </nav>

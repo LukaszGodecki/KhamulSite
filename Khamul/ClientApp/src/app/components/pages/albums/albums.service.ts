@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Album } from '../models/album';
 import { Observable, of } from 'rxjs';
+import { Album } from '../../../models/album';
 
 @Injectable({
   providedIn: 'root'
@@ -964,5 +964,8 @@ export class AlbumsService {
 
     getAllAlbums(): Observable<Album[]> {
         return of(this.allAlbums); 
+    }
+    getAlbumById(id: number): Album {
+        return this.allAlbums.filter(album => album.id == id)[0]
     }
 }

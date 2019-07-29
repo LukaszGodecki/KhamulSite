@@ -10,8 +10,8 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './components/app-routing.module';
 import { HomeModule } from './components/pages/home/home.module';
-import { PicturesReportsModule } from './components/pages/pictures-reports/pictures-reports.module';
 import { MaterialModule } from './shared/material.module';
+import { AlbumsModule } from './components/pages/albums/albums.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { MaterialModule } from './shared/material.module';
       StickyNavModule,
       AppRoutingModule,
       HomeModule,
-      PicturesReportsModule,
+      AlbumsModule,
       MaterialModule
     ],
   providers: [],

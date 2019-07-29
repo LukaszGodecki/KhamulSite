@@ -7,8 +7,8 @@ const routes: Routes = [
         loadChildren: './pages/home/home.module#HomeModule'
     },
     {
-        path: "pictures-reports",
-        loadChildren: './pages/pictures-reports/pictures-reports.module#PicturesReportsModule'
+        path: "albums",
+        loadChildren: './pages/albums/albums.module#AlbumsModule'
     },
     { path: "**", redirectTo: "home", pathMatch: "full" }
 ];

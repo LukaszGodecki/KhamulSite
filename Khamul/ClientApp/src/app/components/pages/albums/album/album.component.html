@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-title>
+        {{album.title}}
+    </mat-card-title>
+    <div class="flex-container">
+        <div class="flex-item" *ngFor="let picture of album.pictures">
+            <a (click)="viewPicture(picture.id)"><img [src]="picture.linkToMiniature" /></a>
+        </div>
+    </div>
+</mat-card>
+<div style="padding-bottom:50px"></div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal" *ngIf="selectedPicture">
+
+    <!-- The Close Button -->
+    <span class="close" (click)="closePicture()">&times;</span>
+
+    <!-- Modal Content (The Image) -->
+    <img [src]="selectedPicture.linkToPicture" class="modal-content" >
+
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption">Jakaœ treœæ.</div>
+</div>
