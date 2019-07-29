@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PicturesReportsComponent } from './pictures-reports.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../../shared/material.module';
 import { SharedModule } from '../../../shared/shared.module';
+import { AlbumsComponent } from './albums.component';
+import { AlbumComponent } from './album/album.component';
 
 @NgModule({
     declarations: [
-        PicturesReportsComponent
+        AlbumsComponent,
+        AlbumComponent
     ],
     imports: [
         CommonModule,
@@ -18,9 +20,13 @@ import { SharedModule } from '../../../shared/shared.module';
         RouterModule.forChild([
             {
                 path: "",
-                component: PicturesReportsComponent,
+                component: AlbumsComponent,
+            },
+            {
+                path: "album/:id",
+                component: AlbumComponent,
             },
         ])
     ]
 })
-export class PicturesReportsModule { }
+export class AlbumsModule { }

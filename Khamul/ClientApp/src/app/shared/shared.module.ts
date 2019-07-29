@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlbumCardComponent } from './album-card/album-card.component';
 import { MaterialModule } from './material.module';
+import { AlbumCardComponent } from '../components/pages/albums/album-card/album-card.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,7 +12,8 @@ import { MaterialModule } from './material.module';
     ],
   imports: [
       CommonModule,
-      MaterialModule
+      MaterialModule,
+      RouterModule
     ],
     exports: [
         AlbumCardComponent

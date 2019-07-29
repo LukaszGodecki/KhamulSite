@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AlbumsService } from '../../../shared/albums.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Album } from '../../../models/album';
 import { Observable } from 'rxjs';
+import { AlbumsService } from '../albums/albums.service';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+    
 
     albums$: Observable<Album[]>;
 
@@ -16,5 +17,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         this.albums$ = this.albumService.getAllAlbums();
+        //this.albums$.subscribe(() => { }, error => { console.log(error); });
     }
+    
 }

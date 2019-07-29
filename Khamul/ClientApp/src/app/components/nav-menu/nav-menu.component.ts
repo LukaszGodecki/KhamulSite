@@ -6,13 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  isExpanded = false;
+    private isSearchPanelVisible: boolean = false;
 
-  collapse() {
-    this.isExpanded = false;
-  }
+    showSearchPanel(): void {
+        this.isSearchPanelVisible = !this.isSearchPanelVisible;
+    }
 
-  toggle() {
-    this.isExpanded = !this.isExpanded;
-  }
 }
