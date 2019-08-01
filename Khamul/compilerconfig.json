@@ -4,19 +4,27 @@
     "inputFile": "ClientApp/src/styles.less"
   },
   {
-    "outputFile": "ClientApp/src/app/nav-menu/nav-menu.component.css",
-    "inputFile": "ClientApp/src/app/nav-menu/nav-menu.component.less"
+    "outputFile": "ClientApp/src/app/components/pages/albums/album/album.component.css",
+    "inputFile": "ClientApp/src/app/components/pages/albums/album/album.component.scss"
   },
   {
-    "outputFile": "ClientApp/src/app/shared/album-card/album-card.component.css",
-    "inputFile": "ClientApp/src/app/shared/album-card/album-card.component.less"
+    "outputFile": "ClientApp/src/app/app.component.css",
+    "inputFile": "ClientApp/src/app/app.component.scss"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/nav-menu/nav-menu.component.css",
+    "inputFile": "ClientApp/src/app/components/nav-menu/nav-menu.component.scss"
+  },
+  {
+    "outputFile": "ClientApp/src/app/components/pages/albums/album-card/album-card.component.css",
+    "inputFile": "ClientApp/src/app/components/pages/albums/album-card/album-card.component.scss"
   },
   {
     "outputFile": "ClientApp/src/app/components/pages/home/home.component.css",
-    "inputFile": "ClientApp/src/app/components/pages/home/home.component.less"
+    "inputFile": "ClientApp/src/app/components/pages/home/home.component.scss"
   },
   {
-    "outputFile": "ClientApp/src/app/components/pages/albums/album/album.component.css",
-    "inputFile": "ClientApp/src/app/components/pages/albums/album/album.component.scss"
+    "outputFile": "ClientApp/src/app/components/footer/footer.component.css",
+    "inputFile": "ClientApp/src/app/components/footer/footer.component.scss"
   }
 ]

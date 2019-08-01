@@ -1,34 +1,29 @@
 ﻿/* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-.example-container {
-  width: 500px;
-  height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-.example-sidenav-content {
+.flex-container {
   display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.example-sidenav {
-  padding: 20px;
+/*@media all and (max-width: 1000px) {
+    .flex-container {
+        justify-content: flex-start;
+    }
+}*/
+.flex-item {
+  margin-top: 20px;
 }
 button:focus {
   outline: 0;
 }
 body {
-  width: 1000px;
-  margin: auto;
+  margin: 0 auto;
   background-color: lightgray;
 }
 @media (max-width: 767px) {
   .hide-on-mobiles {
     display: none;
-    margin: 0;
-  }
-  body {
-    color: red;
-    width: 100%;
+    margin: auto;
   }
 }
