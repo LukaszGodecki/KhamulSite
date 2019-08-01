@@ -5,6 +5,7 @@ import { Album } from '../../../models/album';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AlbumsService {
     private allAlbums: Album[] = [
         {
@@ -46,7 +47,7 @@ export class AlbumsService {
             ],
             publishingHouse: { id: 1, name: "GMT" },
             albumTypes: [
-                { id: 1, name: "Album zdjêæ" },
+                { id: 1, name: "Album zdjÄ™Ä‡" },
                 { id: 2, name: "Relacja z rozgrywki" },
             ],
             albumMiniaturePicture: {
@@ -186,7 +187,7 @@ export class AlbumsService {
             ],
             publishingHouse: { id: 1, name: "GMT" },
             albumTypes: [
-                { id: 1, name: "Album zdjêæ" },
+                { id: 1, name: "Album zdjÄ™Ä‡" },
                 { id: 2, name: "Relacja z rozgrywki" },
             ],
             albumMiniaturePicture: {
@@ -244,11 +245,11 @@ export class AlbumsService {
             dateTo: new Date(),
             players: [
                 { id: 1, name: "Khamul" },
-                { id: 4, name: "S³awek" }
+                { id: 4, name: "SÅ‚awek" }
             ],
             publishingHouse: { id: 2, name: "Strategemata" },
             albumTypes: [
-                { id: 1, name: "Album zdjêæ" },
+                { id: 1, name: "Album zdjÄ™Ä‡" },
                 { id: 2, name: "Relacja z rozgrywki" },
             ],
             albumMiniaturePicture: {
@@ -304,7 +305,7 @@ export class AlbumsService {
             ],
             publishingHouse: { id: 3, name: "VaeVictis" },
             albumTypes: [
-                { id: 1, name: "Album zdjêæ" },
+                { id: 1, name: "Album zdjÄ™Ä‡" },
                 { id: 2, name: "Relacja z rozgrywki" },
             ],
             albumMiniaturePicture: {
@@ -381,9 +382,9 @@ export class AlbumsService {
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
             ],
-            publishingHouse: { id: 3, name: "Jakieœ czeskie ;)" },
+            publishingHouse: { id: 3, name: "JakieÅ› czeskie ;)" },
             albumTypes: [
-                { id: 1, name: "Album zdjêæ" },
+                { id: 1, name: "Album zdjÄ™Ä‡" },
                 { id: 2, name: "Relacja z rozgrywki" },
             ],
             albumMiniaturePicture: {
@@ -462,7 +463,7 @@ export class AlbumsService {
             ],
             publishingHouse: { id: 4, name: "Dragon" },
             albumTypes: [
-                { id: 1, name: "Album zdjêæ" },
+                { id: 1, name: "Album zdjÄ™Ä‡" },
                 { id: 2, name: "Relacja z rozgrywki" },
             ],
             albumMiniaturePicture: {
@@ -529,7 +530,7 @@ export class AlbumsService {
             ],
             publishingHouse: { id: 1, name: "GMT" },
             albumTypes: [
-                { id: 1, name: "Album zdjêæ" },
+                { id: 1, name: "Album zdjÄ™Ä‡" },
                 { id: 2, name: "Relacja z rozgrywki" },
             ],
             albumMiniaturePicture: {
@@ -699,7 +700,7 @@ export class AlbumsService {
                     albumID: 8
                 },
             ],
-            title: "Kraków 22.10.2016",
+            title: "KrakÃ³w 22.10.2016",
             description: "",
             shortDescription: "",
             dateFrom: new Date(),
@@ -942,7 +943,7 @@ export class AlbumsService {
                     albumID: 9
                 }
             ],
-            title: "Kraków 06-08.04.2018",
+            title: "KrakÃ³w 06-08.04.2018",
             description: "",
             shortDescription: "",
             dateFrom: new Date(),
