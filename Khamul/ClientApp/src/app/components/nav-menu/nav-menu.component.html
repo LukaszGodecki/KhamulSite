@@ -1,57 +1,93 @@
-﻿<mat-card class="custom-image">
-    <img mat-card-image src="../../assets/logo.jpg">
-</mat-card>
 
-<nav class="sticky-nav" ngStickyNav>
-    <mat-card class="custom-menu">
-
-        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="['/home']">Strona główna</button>
-            <button mat-menu-item [routerLink]="['/albums']">Albumy</button>
-        </mat-menu>
-        <span class="hide-on-mobiles">
-            <button mat-button [routerLink]="['/home']">Strona główna</button>
-            <button mat-button [routerLink]="['/albums']">Albumy</button>
-        </span>
-        <span style="float:right">
-            <button mat-button (click)="showSearchPanel()">
-                <i class="material-icons" *ngIf="!isSearchPanelVisible">
-                    search
-                </i>
-                <i class="material-icons" *ngIf="isSearchPanelVisible">
-                    clear
-                </i>
-            </button>
-        </span>
-        
-        
-        <div class="flex-container" *ngIf="isSearchPanelVisible">
-            <mat-form-field class="flex-item">
-                <mat-select placeholder="Wydawnictwo">
-                    <mat-option value="option">Option</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="flex-item">
-                <mat-select placeholder="Gracz">
-                    <mat-option value="option">Option</mat-option>
-                </mat-select>
-            </mat-form-field>            
-            <mat-form-field class="flex-item">
-                <input matInput [matDatepicker]="startPicker" placeholder="Start date">
-                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-                <mat-datepicker #startPicker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="flex-item">
-                <input matInput [matDatepicker]="endPicker" placeholder="End date">
-                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-                <mat-datepicker #endPicker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="flex-item">
-                <input matInput placeholder="Szukaj" />
-            </mat-form-field>
-        </div>
-
+    <mat-card class="custom-image">
+        <img mat-card-image src="../../assets/logo.jpg">
     </mat-card>
-    
-</nav>
+
+
+    <nav class="sticky-nav" ngStickyNav style="max-width:1000px">
+        <mat-card class="custom-menu">
+            <div style="display: flex; justify-content: space-between">
+                <span>
+                    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item [routerLink]="['/home']">Strona główna</button>
+                        <button mat-menu-item [routerLink]="['/albums']">Albumy</button>
+                    </mat-menu>
+                    <span class="hide-on-mobiles">
+                        <button mat-button [routerLink]="['/home']">Strona główna</button>
+                        <button mat-button [routerLink]="['/albums']">Albumy</button>
+                    </span>
+                </span>
+                <span>
+                    <button mat-button (click)="clearFilters()" *ngIf="isSearchPanelVisible">
+                        <mat-icon>close</mat-icon> Wyczyść filtry
+                    </button>
+                    <button mat-button (click)="showSearchPanel()" *ngIf="!isSearchPanelVisible">
+                        <i class="material-icons">
+                            search
+                        </i>
+                    </button>
+                    <button mat-button (click)="showSearchPanel()" *ngIf="isSearchPanelVisible">
+                        <i class="material-icons">
+                            clear
+                        </i> Ukryj panel wyszukiwania
+                    </button>
+                </span>
+            </div>            
+
+            <div class="flex-container flex-container-nav" *ngIf="isSearchPanelVisible">
+                <mat-form-field class="flex-item flex-item-nav">
+                    <mat-select placeholder="Typ albumu" [(ngModel)]="searchTypeAlbum">
+                        <mat-option *ngFor="let albumType of allAlbumTypes$ | async" [value]="albumType.id">{{albumType.name}}</mat-option>
+                    </mat-select>
+                    <button mat-button *ngIf="searchTypeAlbum" matSuffix mat-icon-button aria-label="Clear" (click)="searchTypeAlbum=null">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="flex-item flex-item-nav">
+                    <mat-select placeholder="Wydawnictwo" [(ngModel)]="searchPublishingHouse">
+                        <mat-option *ngFor="let publishingHouse of allPublishingHouses$ | async" [value]="publishingHouse.id">{{publishingHouse.name}}</mat-option>
+                    </mat-select>
+                    <button mat-button *ngIf="searchPublishingHouse" matSuffix mat-icon-button aria-label="Clear" (click)="searchPublishingHouse=null">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="flex-item flex-item-nav">
+                    <mat-select placeholder="Gracz" [(ngModel)]="searchPlayer">
+                        <mat-option *ngFor="let player of allPlayers$ | async" [value]="player.id">{{player.name}}</mat-option>
+                    </mat-select>
+                    <button mat-button *ngIf="searchPlayer" matSuffix mat-icon-button aria-label="Clear" (click)="searchPlayer=null">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="flex-item flex-item-nav">
+                    <input matInput [matDatepicker]="startPicker" placeholder="Start date" [(ngModel)]="searchStartDate">
+                    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startPicker></mat-datepicker>
+                    <button mat-button *ngIf="searchStartDate" matSuffix mat-icon-button aria-label="Clear" (click)="searchStartDate=null">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="flex-item flex-item-nav">
+                    <input matInput [matDatepicker]="endPicker" placeholder="End date" [(ngModel)]="searchEndDate">
+                    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endPicker></mat-datepicker>
+                    <button mat-button *ngIf="searchEndDate" matSuffix mat-icon-button aria-label="Clear" (click)="searchEndDate=null">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="flex-item flex-item-nav">
+                    <input matInput [(ngModel)]="searchValue" placeholder="Szukaj" />
+                    <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+
+        </mat-card>
+    </nav>

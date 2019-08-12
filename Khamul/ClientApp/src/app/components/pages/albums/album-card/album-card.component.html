@@ -2,13 +2,22 @@
     <mat-card-header>
         <mat-card-title>{{album.title}}</mat-card-title>
     </mat-card-header>
-        <a [routerLink]="['/albums/album', album.id]">
-            <img mat-card-image src="{{album.albumMiniaturePicture.linkToMiniature}}">
-        </a>    
-        <mat-card-content>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button>Zobacz relację</button>
-        </mat-card-actions>
+    <mat-card-subtitle>
+        {{album.dateFrom | date: 'dd-MM-yyyy'}} - {{album.dateTo | date: 'dd-MM-yyyy'}}
+    </mat-card-subtitle>
+    <a [routerLink]="['/albums/album', album.id]">
+        <img mat-card-image src="{{album.albumMiniaturePicture.linkToMiniature}}" matTooltip="Click to see the album.">
+    </a>
+    <i class="material-icons" matTooltip="{{album.title}}" style="opacity: 0.1">
+        photo_camera
+    </i>
+
+    <i class="material-icons" matTooltip="">
+        subject
+    </i>
+
+    <i class="material-icons" matTooltip="">
+        insert_invitation
+    </i>        
 </mat-card>
 

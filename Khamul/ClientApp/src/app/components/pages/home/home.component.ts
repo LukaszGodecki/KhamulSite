@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Album } from '../../../models/album';
 import { Observable } from 'rxjs';
 import { AlbumsService } from '../albums/albums.service';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,12 @@ export class HomeComponent implements OnInit {
 
     albums$: Observable<Album[]>;
 
-    constructor(private albumService: AlbumsService) { }
+    constructor(private albumService: AlbumsService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+        this.matIconRegistry.addSvgIcon(
+            "musicon",
+            this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/instagram.svg")
+        );
+    }
 
     ngOnInit(): void {
         this.albums$ = this.albumService.getAllAlbums();

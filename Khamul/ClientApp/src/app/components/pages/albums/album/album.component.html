@@ -4,7 +4,7 @@
     </mat-card-title>
     <div class="flex-container">
         <div class="flex-item" *ngFor="let picture of album.pictures">
-            <a (click)="viewPicture(picture.id)"><img [src]="picture.linkToMiniature" /></a>
+            <a (click)="viewPicture(picture.id)"style="cursor:pointer" matTooltip="Click to view larger image."><img [src]="picture.linkToMiniature" /></a>
         </div>
     </div>
 </mat-card>
@@ -20,5 +20,5 @@
     <img [src]="selectedPicture.linkToPicture" class="modal-content" >
 
     <!-- Modal Caption (Image Text) -->
-    <div id="caption">Jakaœ treœæ.</div>
+    <div id="caption">JakaÅ› treÅ›Ä‡.</div>
 </div>
