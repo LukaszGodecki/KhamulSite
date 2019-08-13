@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Album } from '../../../models/album';
+import { AlbumType } from '../../../models/album-type';
+import { Player } from '../../../models/player';
+import { PublishingHouse } from '../../../models/publishing-house';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +48,7 @@ export class AlbumsService {
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
             ],
-            publishingHouse: { id: 1, name: "GMT" },
+            publishingHouse: { id: 1, name: "GMT", linkToLogo: "" },
             albumTypes: [
                 { id: 1, name: "Album zdjęć" },
                 { id: 2, name: "Relacja z rozgrywki" },
@@ -185,7 +188,7 @@ export class AlbumsService {
                 { id: 1, name: "Khamul" },
                 { id: 3, name: "Raleen" }
             ],
-            publishingHouse: { id: 1, name: "GMT" },
+            publishingHouse: { id: 1, name: "GMT", linkToLogo: "" },
             albumTypes: [
                 { id: 1, name: "Album zdjęć" },
                 { id: 2, name: "Relacja z rozgrywki" },
@@ -247,7 +250,7 @@ export class AlbumsService {
                 { id: 1, name: "Khamul" },
                 { id: 4, name: "Sławek" }
             ],
-            publishingHouse: { id: 2, name: "Strategemata" },
+            publishingHouse: { id: 2, name: "Strategemata", linkToLogo: "" },
             albumTypes: [
                 { id: 1, name: "Album zdjęć" },
                 { id: 2, name: "Relacja z rozgrywki" },
@@ -303,7 +306,7 @@ export class AlbumsService {
                 { id: 1, name: "Khamul" },
                 { id: 5, name: "Saw11" }
             ],
-            publishingHouse: { id: 3, name: "VaeVictis" },
+            publishingHouse: { id: 3, name: "VaeVictis", linkToLogo: "" },
             albumTypes: [
                 { id: 1, name: "Album zdjęć" },
                 { id: 2, name: "Relacja z rozgrywki" },
@@ -382,7 +385,7 @@ export class AlbumsService {
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
             ],
-            publishingHouse: { id: 3, name: "Jakieś czeskie ;)" },
+            publishingHouse: { id: 4, name: "Jakieś czeskie ;)", linkToLogo: "" },
             albumTypes: [
                 { id: 1, name: "Album zdjęć" },
                 { id: 2, name: "Relacja z rozgrywki" },
@@ -461,7 +464,7 @@ export class AlbumsService {
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
             ],
-            publishingHouse: { id: 4, name: "Dragon" },
+            publishingHouse: { id: 5, name: "Dragon", linkToLogo: "" },
             albumTypes: [
                 { id: 1, name: "Album zdjęć" },
                 { id: 2, name: "Relacja z rozgrywki" },
@@ -528,7 +531,7 @@ export class AlbumsService {
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
             ],
-            publishingHouse: { id: 1, name: "GMT" },
+            publishingHouse: { id: 1, name: "GMT", linkToLogo: "" },
             albumTypes: [
                 { id: 1, name: "Album zdjęć" },
                 { id: 2, name: "Relacja z rozgrywki" },
@@ -706,7 +709,7 @@ export class AlbumsService {
             dateFrom: new Date(),
             dateTo: new Date(),
             players: [],
-            publishingHouse: { id: null, name: "" },
+            publishingHouse: { id: null, name: "", linkToLogo: "" },
             albumTypes: [
                 { id: 3, name: "Relacja z konwentu" }
             ],
@@ -949,7 +952,7 @@ export class AlbumsService {
             dateFrom: new Date(),
             dateTo: new Date(),
             players: [],
-            publishingHouse: { id: null, name: "" },
+            publishingHouse: { id: null, name: "", linkToLogo: "" },
             albumTypes: [
                 { id: 3, name: "Relacja z konwentu" }
             ],
@@ -961,10 +964,39 @@ export class AlbumsService {
             }
         },
     ]
+    private allAlbumTypes: AlbumType[] = [
+        { id: 1, name: "Album zdjęć" },
+        { id: 2, name: "Relacja z rozgrywki" },
+        { id: 3, name: "Relacja z konwentu" }
+    ];
+    private allPlayers: Player[] = [
+        { id: 1, name: "Khamul" },
+        { id: 2, name: "Namek" },
+        { id: 3, name: "Raleen" },
+        { id: 4, name: "Sławek" },
+        { id: 5, name: "Saw11" }
+    ];
+    private allPublishingHouses: PublishingHouse[] = [
+        { id: 1, name: "GMT", linkToLogo: "" },
+        { id: 2, name: "Strategemata", linkToLogo: "" },
+        { id: 3, name: "VaeVictis", linkToLogo: "" },
+        { id: 4, name: "Alter", linkToLogo: "" },
+        { id: 5, name: "Dragon", linkToLogo: "" },
+
+    ];
     constructor() { }
 
     getAllAlbums(): Observable<Album[]> {
         return of(this.allAlbums); 
+    }
+    getAllAlbumTypes(): Observable<AlbumType[]> {
+        return of(this.allAlbumTypes);
+    }
+    getAllPlayers(): Observable<Player[]> {
+        return of(this.allPlayers);
+    }
+    getAllPublishingHouses(): Observable<PublishingHouse[]> {
+        return of(this.allPublishingHouses);
     }
     getAlbumById(id: number): Album {
         return this.allAlbums.filter(album => album.id == id)[0]

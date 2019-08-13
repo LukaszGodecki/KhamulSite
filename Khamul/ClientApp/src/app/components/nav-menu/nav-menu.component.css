@@ -1,8 +1,8 @@
 ﻿.sticky-nav {
-  width: 1000px;
+  width: 100%;
   margin: auto;
   z-index: 1;
-  padding-top: 0px; }
+  padding-top: 0; }
 
 .custom-image.mat-card {
   padding-bottom: 0px;
@@ -12,3 +12,10 @@
 .custom-menu.mat-card {
   border-top-left-radius: 0;
   border-top-right-radius: 0; }
+
+.flex-item-nav {
+  width: 230px;
+  margin: 0 10px; }
+
+.flex-container-nav {
+  max-width: 1000px; }
