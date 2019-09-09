@@ -4,6 +4,7 @@ import { AlbumType } from '../../models/album-type';
 import { Player } from '../../models/player';
 import { PublishingHouse } from '../../models/publishing-house';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -23,12 +24,12 @@ export class NavMenuComponent implements OnInit {
     private searchEndDate: Date = null;
     private searchValue: string = "";
 
-    constructor(private albumService: AlbumsService) { }
+    constructor(private albumsService: AlbumsService, public router: Router) { }
 
     ngOnInit(): void {
-        this.allAlbumTypes$ = this.albumService.getAllAlbumTypes();
-        this.allPlayers$ = this.albumService.getAllPlayers();
-        this.allPublishingHouses$ = this.albumService.getAllPublishingHouses();
+        this.allAlbumTypes$ = this.albumsService.getAllAlbumTypes();
+        this.allPlayers$ = this.albumsService.getAllPlayers();
+        this.allPublishingHouses$ = this.albumsService.getAllPublishingHouses();
     }
     showSearchPanel(): void {
         this.isSearchPanelVisible = !this.isSearchPanelVisible;
@@ -40,7 +41,7 @@ export class NavMenuComponent implements OnInit {
         this.searchPlayer = null;
         this.searchStartDate = null;
         this.searchEndDate = null;
-        this.searchValue = "";
+        this.albumsService.searchValue = "";
     }
 
 }

@@ -10,6 +10,51 @@ import { PublishingHouse } from '../../../models/publishing-house';
 })
 
 export class AlbumsService {
+
+    albums: Album[] = []
+    filteredAlbums: Album[] = [];
+
+    //#region searchValue
+    _searchValue: string;
+    get searchValue(): string {
+        return this._searchValue;
+    }
+    set searchValue(value: string) {
+        this._searchValue = value;
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer);
+    }
+    //#endregion
+    //#region searchAlbumType
+    _searchAlbumType: number;
+    get searchAlbumType(): number {
+        return this._searchAlbumType;
+    }
+    set searchAlbumType(value: number) {
+        this._searchAlbumType = value;
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer);
+    }
+    //#endregion
+    //#region searchPublishingHouse
+    _searchPublishingHouse: number;
+    get searchPublishingHouse(): number {
+        return this._searchPublishingHouse;
+    }
+    set searchPublishingHouse(value: number) {
+        this._searchPublishingHouse = value;
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer);
+    }
+    //#endregion
+    //#region searchPlayer
+    _searchPlayer: number;
+    get searchPlayer(): number {
+        return this._searchPlayer;
+    }
+    set searchPlayer(value: number) {
+        this._searchPlayer = value;
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer);
+    }
+    //#endregion   
+    
     private allAlbums: Album[] = [
         {
             id: 1,
@@ -42,8 +87,8 @@ export class AlbumsService {
             title: "GloryIII - Antietam The Final Attack",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2013, 1, 19),
+            dateTo: new Date(2013, 1, 19),
             players: [
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
@@ -177,13 +222,13 @@ export class AlbumsService {
                     linkToMiniature: "http://khamul.webserwer.pl/assets/2013_04_28Antiochia1098/SMALL_IMG_0474.jpg",
                     albumID: 2
                 },
-                
+
             ],
             title: "Antiochia 1098",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2013, 4, 28),
+            dateTo: new Date(2013, 4, 28),
             players: [
                 { id: 1, name: "Khamul" },
                 { id: 3, name: "Raleen" }
@@ -244,8 +289,8 @@ export class AlbumsService {
             title: "Alma 1854",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2013, 9, 28),
+            dateTo: new Date(2013, 9, 28),
             players: [
                 { id: 1, name: "Khamul" },
                 { id: 4, name: "Sławek" }
@@ -264,7 +309,7 @@ export class AlbumsService {
         },
         {
             id: 4,
-            pictures: [                
+            pictures: [
                 {
                     id: 30,
                     linkToPicture: "http://khamul.webserwer.pl/assets/2014_07_13FozDoArouce1811/IMG_3665.jpg",
@@ -300,8 +345,8 @@ export class AlbumsService {
             title: "Alma 1854",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2014, 7, 13),
+            dateTo: new Date(2014, 7, 13),
             players: [
                 { id: 1, name: "Khamul" },
                 { id: 5, name: "Saw11" }
@@ -320,7 +365,7 @@ export class AlbumsService {
         },
         {
             id: 5,
-            pictures: [                
+            pictures: [
                 {
                     id: 35,
                     linkToPicture: "http://khamul.webserwer.pl/assets/2016_09_23BitvaNaPolichPelennoru/IMG_0275.jpg",
@@ -379,8 +424,8 @@ export class AlbumsService {
             title: "Alma 1854",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2016, 9, 23),
+            dateTo: new Date(2016, 9, 23),
             players: [
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
@@ -458,8 +503,8 @@ export class AlbumsService {
             title: "Kircholm 1605",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2017, 5, 27),
+            dateTo: new Date(2017, 5, 27),
             players: [
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
@@ -478,7 +523,7 @@ export class AlbumsService {
         },
         {
             id: 7,
-            pictures: [                
+            pictures: [
                 {
                     id: 53,
                     linkToPicture: "http://khamul.webserwer.pl/assets/2018_04_08Tczew1627/20180407_210852.jpg",
@@ -525,8 +570,8 @@ export class AlbumsService {
             title: "Tczew1627",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2018, 4, 8),
+            dateTo: new Date(2018, 4, 8),
             players: [
                 { id: 1, name: "Khamul" },
                 { id: 2, name: "Namek" }
@@ -706,8 +751,8 @@ export class AlbumsService {
             title: "Kraków 22.10.2016",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2016, 10, 22),
+            dateTo: new Date(2016, 10, 22),
             players: [],
             publishingHouse: { id: null, name: "", linkToLogo: "" },
             albumTypes: [
@@ -722,7 +767,7 @@ export class AlbumsService {
         },
         {
             id: 9,
-            pictures: [                
+            pictures: [
                 {
                     id: 86,
                     linkToPicture: "http://khamul.webserwer.pl/assets/2018_04_06-08Krakow/20180406_182203.jpg",
@@ -949,8 +994,8 @@ export class AlbumsService {
             title: "Kraków 06-08.04.2018",
             description: "",
             shortDescription: "",
-            dateFrom: new Date(),
-            dateTo: new Date(),
+            dateFrom: new Date(2018, 4, 6),
+            dateTo: new Date(2018, 4, 6),
             players: [],
             publishingHouse: { id: null, name: "", linkToLogo: "" },
             albumTypes: [
@@ -963,7 +1008,7 @@ export class AlbumsService {
                 albumID: 9
             }
         },
-    ]
+    ];
     private allAlbumTypes: AlbumType[] = [
         { id: 1, name: "Album zdjęć" },
         { id: 2, name: "Relacja z rozgrywki" },
@@ -984,7 +1029,40 @@ export class AlbumsService {
         { id: 5, name: "Dragon", linkToLogo: "" },
 
     ];
-    constructor() { }
+
+    constructor() {
+        this.albums = this.allAlbums;
+        this.filteredAlbums = this.allAlbums;
+    }
+
+    performFilter(searchValue: string, searchAlbumType: number, searchPublishingHouse: number, searchPlayer: number): Album[] {
+        let tempAlbums: Album[] = this.albums;
+        if (searchValue) {
+            tempAlbums = tempAlbums.filter(
+                (content: Album) =>
+                    content.title.toLocaleLowerCase().indexOf(searchValue.toLocaleLowerCase()) !== -1
+            );
+        }
+        if (searchAlbumType) {
+            tempAlbums = tempAlbums.filter(
+                (content: Album) =>
+                    content.albumTypes.some(item => item.id == searchAlbumType)
+            );               
+        }
+        if (searchPublishingHouse) {
+            tempAlbums = tempAlbums.filter(
+                (content: Album) =>
+                    content.publishingHouse.id == searchPublishingHouse
+            );
+        }
+        if (searchPlayer) {
+            tempAlbums = tempAlbums.filter(
+                (content: Album) =>
+                    content.players.some(item => item.id == searchPlayer)
+            );
+        }
+        return tempAlbums
+    }    
 
     getAllAlbums(): Observable<Album[]> {
         return of(this.allAlbums); 
