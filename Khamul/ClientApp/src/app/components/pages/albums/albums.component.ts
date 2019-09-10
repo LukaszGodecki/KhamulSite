@@ -12,11 +12,10 @@ export class AlbumsComponent implements OnInit {
 
     albums$: Observable<Album[]>;
 
-    constructor(private albumService: AlbumsService) { }
+    constructor(public albumsService: AlbumsService) { }
 
     ngOnInit(): void {
-        this.albums$ = this.albumService.getAllAlbums();
-        //this.albums$.subscribe(() => { }, error => { console.log(error); });
+        this.albums$ = this.albumsService.getAllAlbums();
     }
 
 }

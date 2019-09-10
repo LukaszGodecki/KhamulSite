@@ -8,6 +8,7 @@ mat-icon {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 }
 /*@media all and (max-width: 1000px) {
     .flex-container {
