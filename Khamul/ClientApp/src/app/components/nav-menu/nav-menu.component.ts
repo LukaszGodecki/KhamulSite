@@ -12,17 +12,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
-    private isSearchPanelVisible: boolean = false;
-    private allAlbumTypes$: Observable<AlbumType[]>;
-    private allPlayers$: Observable<Player[]>;
-    private allPublishingHouses$: Observable<PublishingHouse[]>;
-    //search
-    private searchTypeAlbum: number = null;
-    private searchPublishingHouse: number = null;
-    private searchPlayer: number = null;
-    private searchStartDate: Date = null;
-    private searchEndDate: Date = null;
-    private searchValue: string = "";
+    isSearchPanelVisible: boolean = false;
+    allAlbumTypes$: Observable<AlbumType[]>;
+    allPlayers$: Observable<Player[]>;
+    allPublishingHouses$: Observable<PublishingHouse[]>;    
 
     constructor(private albumsService: AlbumsService, public router: Router) { }
 
@@ -36,12 +29,11 @@ export class NavMenuComponent implements OnInit {
     }
 
     clearFilters(): void {
-        this.searchTypeAlbum = null;
-        this.searchPublishingHouse = null;
-        this.searchPlayer = null;
-        this.searchStartDate = null;
-        this.searchEndDate = null;
+        this.albumsService.searchAlbumType = null;
+        this.albumsService.searchPublishingHouse = null;
+        this.albumsService.searchPlayer = null;
+        this.albumsService.searchStartDate = null;
+        this.albumsService.searchEndDate = null;
         this.albumsService.searchValue = "";
     }
-
 }

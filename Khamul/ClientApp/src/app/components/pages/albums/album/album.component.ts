@@ -11,8 +11,8 @@ import { Picture } from '../../../../models/picture';
 })
 export class AlbumComponent implements OnInit {
 
-    private album: Album;
-    private selectedPicture: Picture;
+    album: Album;
+    selectedPicture: Picture;
 
     constructor(private route: ActivatedRoute, private router: Router, private albumsService: AlbumsService) { }
 

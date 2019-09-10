@@ -12,7 +12,7 @@ export class AlbumsComponent implements OnInit {
 
     albums$: Observable<Album[]>;
 
-    constructor(private albumsService: AlbumsService) { }
+    constructor(public albumsService: AlbumsService) { }
 
     ngOnInit(): void {
         this.albums$ = this.albumsService.getAllAlbums();

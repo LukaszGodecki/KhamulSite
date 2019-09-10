@@ -64,19 +64,19 @@
                 </mat-form-field>
 
                 <mat-form-field class="flex-item flex-item-nav">
-                    <input matInput [matDatepicker]="startPicker" placeholder="Start date" [(ngModel)]="searchStartDate">
+                    <input matInput [matDatepicker]="startPicker" placeholder="Start date" [(ngModel)]="albumsService.searchStartDate">
                     <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
                     <mat-datepicker #startPicker></mat-datepicker>
-                    <button mat-button *ngIf="searchStartDate" matSuffix mat-icon-button aria-label="Clear" (click)="searchStartDate=null">
+                    <button mat-button *ngIf="albumsService.searchStartDate" matSuffix mat-icon-button aria-label="Clear" (click)="albumsService.searchStartDate=null">
                         <mat-icon>close</mat-icon>
                     </button>
                 </mat-form-field>
 
                 <mat-form-field class="flex-item flex-item-nav">
-                    <input matInput [matDatepicker]="endPicker" placeholder="End date" [(ngModel)]="searchEndDate">
+                    <input matInput [matDatepicker]="endPicker" placeholder="End date" [(ngModel)]="albumsService.searchEndDate">
                     <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
                     <mat-datepicker #endPicker></mat-datepicker>
-                    <button mat-button *ngIf="searchEndDate" matSuffix mat-icon-button aria-label="Clear" (click)="searchEndDate=null">
+                    <button mat-button *ngIf="albumsService.searchEndDate" matSuffix mat-icon-button aria-label="Clear" (click)="albumsService.searchEndDate=null">
                         <mat-icon>close</mat-icon>
                     </button>
                 </mat-form-field>

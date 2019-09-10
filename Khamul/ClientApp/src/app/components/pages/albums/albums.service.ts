@@ -21,7 +21,7 @@ export class AlbumsService {
     }
     set searchValue(value: string) {
         this._searchValue = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer);
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
     }
     //#endregion
     //#region searchAlbumType
@@ -31,7 +31,7 @@ export class AlbumsService {
     }
     set searchAlbumType(value: number) {
         this._searchAlbumType = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer);
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
     }
     //#endregion
     //#region searchPublishingHouse
@@ -41,7 +41,7 @@ export class AlbumsService {
     }
     set searchPublishingHouse(value: number) {
         this._searchPublishingHouse = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer);
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
     }
     //#endregion
     //#region searchPlayer
@@ -51,11 +51,31 @@ export class AlbumsService {
     }
     set searchPlayer(value: number) {
         this._searchPlayer = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer);
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
     }
-    //#endregion   
-    
-    private allAlbums: Album[] = [
+    //#endregion
+    //#region searchStartDate
+    _searchStartDate: Date;
+    get searchStartDate(): Date {
+        return this._searchStartDate;
+    }
+    set searchStartDate(value: Date) {
+        this._searchStartDate = value;
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
+    }
+    //#endregion
+    //#region searchEndDate
+    _searchEndDate: Date;
+    get searchEndDate(): Date {
+        return this._searchEndDate;
+    }
+    set searchEndDate(value: Date) {
+        this._searchEndDate = value;
+        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
+    }
+    //#endregion
+
+    allAlbums: Album[] = [
         {
             id: 1,
             pictures: [
@@ -1009,19 +1029,19 @@ export class AlbumsService {
             }
         },
     ];
-    private allAlbumTypes: AlbumType[] = [
+    allAlbumTypes: AlbumType[] = [
         { id: 1, name: "Album zdjęć" },
         { id: 2, name: "Relacja z rozgrywki" },
         { id: 3, name: "Relacja z konwentu" }
     ];
-    private allPlayers: Player[] = [
+    allPlayers: Player[] = [
         { id: 1, name: "Khamul" },
         { id: 2, name: "Namek" },
         { id: 3, name: "Raleen" },
         { id: 4, name: "Sławek" },
         { id: 5, name: "Saw11" }
     ];
-    private allPublishingHouses: PublishingHouse[] = [
+    allPublishingHouses: PublishingHouse[] = [
         { id: 1, name: "GMT", linkToLogo: "" },
         { id: 2, name: "Strategemata", linkToLogo: "" },
         { id: 3, name: "VaeVictis", linkToLogo: "" },
@@ -1035,7 +1055,7 @@ export class AlbumsService {
         this.filteredAlbums = this.allAlbums;
     }
 
-    performFilter(searchValue: string, searchAlbumType: number, searchPublishingHouse: number, searchPlayer: number): Album[] {
+    performFilter(searchValue: string, searchAlbumType: number, searchPublishingHouse: number, searchPlayer: number, searchStartDate: Date, searchEndDate: Date): Album[] {
         let tempAlbums: Album[] = this.albums;
         if (searchValue) {
             tempAlbums = tempAlbums.filter(
@@ -1059,6 +1079,18 @@ export class AlbumsService {
             tempAlbums = tempAlbums.filter(
                 (content: Album) =>
                     content.players.some(item => item.id == searchPlayer)
+            );
+        }
+        if (searchStartDate) {
+            tempAlbums = tempAlbums.filter(
+                (content: Album) =>
+                    content.dateFrom >= searchStartDate
+            );
+        }
+        if (searchEndDate) {
+            tempAlbums = tempAlbums.filter(
+                (content: Album) =>
+                    content.dateTo <= searchEndDate
             );
         }
         return tempAlbums
