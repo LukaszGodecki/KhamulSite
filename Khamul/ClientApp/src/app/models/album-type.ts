@@ -7,3 +7,9 @@ export class AlbumType {
         this.name = "";
     }
 }
+
+export enum AlbumTypeEnum {
+    ALBUM_ZDJEC = 1,
+    RELACJA_Z_ROZGRYWKI = 2,
+    RELACJA_Z_KONWENTU = 3
+}

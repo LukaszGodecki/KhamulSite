@@ -1,4 +1,81 @@
+<mat-card *ngIf="albumsService.isSearchPanelVisible">
+    <div style="display: flex; justify-content: space-between">
+        <span></span>
+        <span>
+            <button mat-button (click)="clearFilters()" >
+                <mat-icon>close</mat-icon> Wyczyść filtry
+            </button>            
+            <button mat-button (click)="showSearchPanel()">
+                <i class="material-icons">
+                    clear
+                </i> Ukryj panel wyszukiwania
+            </button>
+        </span>
+    </div>
+    <div class="flex-container flex-container-nav">
+        <mat-form-field class="flex-item flex-item-nav">
+            <mat-select placeholder="Typ albumu" [(ngModel)]="searchAlbumType">
+                <mat-option *ngFor="let albumType of allAlbumTypes$ | async" [value]="albumType.id">{{albumType.name}}</mat-option>
+            </mat-select>
+            <button mat-button *ngIf="searchAlbumType" matSuffix mat-icon-button aria-label="Clear" (click)="searchAlbumType=null">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="flex-item flex-item-nav">
+            <mat-select placeholder="Wydawnictwo" [(ngModel)]="searchPublishingHouse">
+                <mat-option *ngFor="let publishingHouse of allPublishingHouses$ | async" [value]="publishingHouse.id">{{publishingHouse.name}}</mat-option>
+            </mat-select>
+            <button mat-button *ngIf="searchPublishingHouse" matSuffix mat-icon-button aria-label="Clear" (click)="searchPublishingHouse=null">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="flex-item flex-item-nav">
+            <mat-select placeholder="Gracz" [(ngModel)]="searchPlayer">
+                <mat-option *ngFor="let player of allPlayers$ | async" [value]="player.id">{{player.name}}</mat-option>
+            </mat-select>
+            <button mat-button *ngIf="searchPlayer" matSuffix mat-icon-button aria-label="Clear" (click)="searchPlayer=null">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="flex-item flex-item-nav">
+            <input matInput [matDatepicker]="startPicker" placeholder="Start date" [(ngModel)]="searchStartDate">
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+            <button mat-button *ngIf="searchStartDate" matSuffix mat-icon-button aria-label="Clear" (click)="searchStartDate=null">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="flex-item flex-item-nav">
+            <input matInput [matDatepicker]="endPicker" placeholder="End date" [(ngModel)]="searchEndDate">
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+            <button mat-button *ngIf="searchEndDate" matSuffix mat-icon-button aria-label="Clear" (click)="searchEndDate=null">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="flex-item flex-item-nav">
+            <input matInput [(ngModel)]="searchValue" placeholder="Szukaj" />
+            <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+</mat-card>
+
 <div class="flex-container">
-    <div class="flex-item" *ngFor="let album of albumsService.filteredAlbums"><app-album-card [album]='album'></app-album-card></div>
+    <div class="flex-item" *ngFor="let album of filteredAlbums"><app-album-card [album]='album'></app-album-card></div>
 </div>
-<div style="margin:50px"></div>
+<div style="margin:30px"></div>
+<mat-paginator showFirstLastButtons
+               class="mat-elevation-z2 custom-pagination" 
+               [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = $event">    
+</mat-paginator>    
+<div style="margin:40px"></div>

@@ -2,22 +2,24 @@
     <mat-card-header>
         <mat-card-title>{{album.title}}</mat-card-title>
     </mat-card-header>
-    <mat-card-subtitle>
-        {{album.dateFrom | date: 'dd-MM-yyyy'}} - {{album.dateTo | date: 'dd-MM-yyyy'}}
-    </mat-card-subtitle>
+    <mat-card-subtitle></mat-card-subtitle>    
     <a [routerLink]="['/albums/album', album.id]">
-        <img mat-card-image src="{{album.albumMiniaturePicture.linkToMiniature}}" matTooltip="Click to see the album.">
-    </a>
-    <i class="material-icons" matTooltip="{{album.title}}" style="opacity: 0.1">
+        <img mat-card-image src="{{album.albumMiniaturePicture.linkToMiniature}}" matTooltip="Kliknij aby przejść do albumu.">
+    </a>    
+    <i class="material-icons" matTooltip="{{getAlbumDate(album)}}">
+        update
+    </i>
+    <i class="material-icons" matTooltip="{{getPlayers(album)}}" [ngStyle]="{'opacity': album.players.length > 0 ? '1' : '0.1'}">
+        group
+    </i>
+    <i class="material-icons" matTooltip="{{getAlbumTypeName(albumTypeEnum.ALBUM_ZDJEC)}} (ilość zdjęć w albumie: {{album.pictures.length}})" [ngStyle]="{'opacity': isAlbumProperType(album, albumTypeEnum.ALBUM_ZDJEC) ? '1' : '0.1'}">
         photo_camera
     </i>
-
-    <i class="material-icons" matTooltip="">
+    <i class="material-icons" matTooltip="{{getAlbumTypeName(albumTypeEnum.RELACJA_Z_ROZGRYWKI)}}" [ngStyle]="{'opacity': isAlbumProperType(album, albumTypeEnum.RELACJA_Z_ROZGRYWKI) ? '1' : '0.1'}">
         subject
     </i>
-
-    <i class="material-icons" matTooltip="">
+    <i class="material-icons" matTooltip="{{getAlbumTypeName(albumTypeEnum.RELACJA_Z_KONWENTU)}}" [ngStyle]="{'opacity': isAlbumProperType(album, albumTypeEnum.RELACJA_Z_KONWENTU) ? '1' : '0.1'}">
         insert_invitation
-    </i>        
+    </i>
 </mat-card>
 

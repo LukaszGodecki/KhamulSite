@@ -8,7 +8,6 @@ export class Album {
     pictures: Picture[];
     title: string;
     description: string;
-    shortDescription: string;
     dateFrom: Date;
     dateTo: Date;
     players: Player[];
@@ -22,7 +21,6 @@ export class Album {
         this.pictures = [];
         this.title = "";
         this.description = "";
-        this.shortDescription = "";
         this.dateFrom = new Date();
         this.dateTo = new Date();
         this.players = [];

@@ -31,10 +31,12 @@ import {
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorIntl
 } from '@angular/material';
 
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatPaginatorIntlPol } from './mat-paginator-intl-pol';
 
 @NgModule({
     imports: [
@@ -106,7 +108,8 @@ import { CdkTableModule } from '@angular/cdk/table';
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule
-    ]
+    ],
+    providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlPol }],
 })
 export class MaterialModule {
 

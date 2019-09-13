@@ -12,10 +12,3 @@
 .custom-menu.mat-card {
   border-top-left-radius: 0;
   border-top-right-radius: 0; }
-
-.flex-item-nav {
-  width: 230px;
-  margin: 0 10px; }
-
-.flex-container-nav {
-  max-width: 1000px; }

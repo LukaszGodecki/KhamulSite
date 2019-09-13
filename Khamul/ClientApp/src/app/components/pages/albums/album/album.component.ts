@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Album } from '../../../../models/album';
 import { AlbumsService } from '../albums.service';
 import { Picture } from '../../../../models/picture';
+import { AlbumTypeEnum } from '../../../../models/album-type';
 
 @Component({
   selector: 'app-album',
@@ -21,12 +22,31 @@ export class AlbumComponent implements OnInit {
         this.album = this.albumsService.getAlbumById(id);
     }
 
-    viewPicture(pictureId: number): void {
-        console.log("wchodze");
-        this.selectedPicture = this.album.pictures.filter(picture => picture.id == pictureId)[0];
-        let temp = this.selectedPicture;
+    isDateEquals(currentAlbum: Album): boolean {
+        if (currentAlbum.dateFrom.getTime() == currentAlbum.dateTo.getTime()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    hasAlbumReport(): boolean {
+        return this.album.albumTypes.some(item => item.id === AlbumTypeEnum.RELACJA_Z_ROZGRYWKI)
+    }
+
+    viewPicture(pictureId: number): void {
+        this.selectedPicture = this.album.pictures.filter(picture => picture.id == pictureId)[0];
+    }
+    changePicture(modify: number) {
+        let modifiedIndex = this.album.pictures.findIndex(picture => picture.id == this.selectedPicture.id) + modify;
+        if (modifiedIndex == this.album.pictures.length) {
+            this.selectedPicture = this.album.pictures[0];
+        } else if (modifiedIndex < 0) {
+            this.selectedPicture = this.album.pictures[this.album.pictures.length-1];
+        } else {
+            this.selectedPicture = this.album.pictures[modifiedIndex];
+        }
+    }
     closePicture(): void {
         this.selectedPicture = null;
     }
