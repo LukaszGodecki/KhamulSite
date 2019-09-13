@@ -1,24 +1,30 @@
+<div style="margin-top:20px"></div>
 <mat-card>
     <mat-card-title>
         {{album.title}}
     </mat-card-title>
+    <mat-card-subtitle>
+        {{album.dateFrom | date: 'dd-MM-yyyy'}} <span *ngIf="!isDateEquals(album)">- {{album.dateTo | date: 'dd-MM-yyyy'}}</span>
+        <div>
+            <span *ngFor="let player of album.players; last as isLast">
+                <span style="font-weight: bold">{{player.name}}</span> <span *ngIf="!isLast"> vs </span>
+            </span>
+        </div>
+    </mat-card-subtitle>
+    <mat-card-content *ngIf="hasAlbumReport()" [innerHTML]="album.description">
+    </mat-card-content>
     <div class="flex-container">
         <div class="flex-item" *ngFor="let picture of album.pictures">
-            <a (click)="viewPicture(picture.id)"style="cursor:pointer" matTooltip="Click to view larger image."><img [src]="picture.linkToMiniature" /></a>
+            <a (click)="viewPicture(picture.id)" style="cursor:pointer" matTooltip="Kliknij, aby powiększyć zdjęcie."><img [src]="picture.linkToMiniature" /></a>
         </div>
     </div>
 </mat-card>
-<div style="padding-bottom:50px"></div>
+<div style="margin:50px"></div>
 
 <!-- The Modal -->
 <div id="myModal" class="modal" *ngIf="selectedPicture">
-
-    <!-- The Close Button -->
     <span class="close" (click)="closePicture()">&times;</span>
-
-    <!-- Modal Content (The Image) -->
-    <img [src]="selectedPicture.linkToPicture" class="modal-content" >
-
-    <!-- Modal Caption (Image Text) -->
-    <div id="caption">Jakaś treść.</div>
+    <span class="prev-img" (click)="changePicture(-1)">&#10094;</span>
+    <span class="next-img" (click)="changePicture(1)">&#10095;</span>
+    <img [src]="selectedPicture.linkToPicture" class="modal-content">
 </div>

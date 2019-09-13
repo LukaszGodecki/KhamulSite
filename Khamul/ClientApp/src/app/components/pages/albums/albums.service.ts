@@ -11,69 +11,7 @@ import { PublishingHouse } from '../../../models/publishing-house';
 
 export class AlbumsService {
 
-    albums: Album[] = []
-    filteredAlbums: Album[] = [];
-
-    //#region searchValue
-    _searchValue: string;
-    get searchValue(): string {
-        return this._searchValue;
-    }
-    set searchValue(value: string) {
-        this._searchValue = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
-    }
-    //#endregion
-    //#region searchAlbumType
-    _searchAlbumType: number;
-    get searchAlbumType(): number {
-        return this._searchAlbumType;
-    }
-    set searchAlbumType(value: number) {
-        this._searchAlbumType = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
-    }
-    //#endregion
-    //#region searchPublishingHouse
-    _searchPublishingHouse: number;
-    get searchPublishingHouse(): number {
-        return this._searchPublishingHouse;
-    }
-    set searchPublishingHouse(value: number) {
-        this._searchPublishingHouse = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
-    }
-    //#endregion
-    //#region searchPlayer
-    _searchPlayer: number;
-    get searchPlayer(): number {
-        return this._searchPlayer;
-    }
-    set searchPlayer(value: number) {
-        this._searchPlayer = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
-    }
-    //#endregion
-    //#region searchStartDate
-    _searchStartDate: Date;
-    get searchStartDate(): Date {
-        return this._searchStartDate;
-    }
-    set searchStartDate(value: Date) {
-        this._searchStartDate = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
-    }
-    //#endregion
-    //#region searchEndDate
-    _searchEndDate: Date;
-    get searchEndDate(): Date {
-        return this._searchEndDate;
-    }
-    set searchEndDate(value: Date) {
-        this._searchEndDate = value;
-        this.filteredAlbums = this.performFilter(this.searchValue, this.searchAlbumType, this.searchPublishingHouse, this.searchPlayer, this.searchStartDate, this.searchEndDate);
-    }
-    //#endregion
+    isSearchPanelVisible: boolean = false;
 
     allAlbums: Album[] = [
         {
@@ -105,8 +43,7 @@ export class AlbumsService {
                 }
             ],
             title: "GloryIII - Antietam The Final Attack",
-            description: "",
-            shortDescription: "",
+            description: "",            
             dateFrom: new Date(2013, 1, 19),
             dateTo: new Date(2013, 1, 19),
             players: [
@@ -245,8 +182,7 @@ export class AlbumsService {
 
             ],
             title: "Antiochia 1098",
-            description: "",
-            shortDescription: "",
+            description: "",            
             dateFrom: new Date(2013, 4, 28),
             dateTo: new Date(2013, 4, 28),
             players: [
@@ -307,8 +243,7 @@ export class AlbumsService {
 
             ],
             title: "Alma 1854",
-            description: "",
-            shortDescription: "",
+            description: "",            
             dateFrom: new Date(2013, 9, 28),
             dateTo: new Date(2013, 9, 28),
             players: [
@@ -362,9 +297,8 @@ export class AlbumsService {
                 },
 
             ],
-            title: "Alma 1854",
-            description: "",
-            shortDescription: "",
+            title: "Foz do Arouce 1811",
+            description: "",            
             dateFrom: new Date(2014, 7, 13),
             dateTo: new Date(2014, 7, 13),
             players: [
@@ -441,9 +375,8 @@ export class AlbumsService {
                     albumID: 5
                 },
             ],
-            title: "Alma 1854",
-            description: "",
-            shortDescription: "",
+            title: "Bitva Na Polich Pelennoru",
+            description: "",            
             dateFrom: new Date(2016, 9, 23),
             dateTo: new Date(2016, 9, 23),
             players: [
@@ -521,8 +454,7 @@ export class AlbumsService {
                 },
             ],
             title: "Kircholm 1605",
-            description: "",
-            shortDescription: "",
+            description: "<p>27 maja 2017 odbyło się ostatnie spotkanie sekcji gier przed wakacjami. Jak się okazało, było to też ostatnie spotkanie sekcji w ogóle. W związku z niewielkim zainteresowaniem postanowiłem nasze spotkania zawiesić na bliżej nieokreślony czas. Jednak mam nadzieję, że za ten czas, bliżej nieokreślony, znowu spotkamy się w Będzinie.</p><p>Początkowo miało być nas więcej i mieliśmy grać w zupełnie inne gry, ale w końcu zagraliśmy w trzy osoby w dragonowski Kircholm 1605. Sebastian i Darek wcielili się w wojska Chodkiewicza, ja natomiast zagrałem Szwedami. Rozgrywka emocjonująca do ostatniej chwili, można powiedzieć, że zakończyła się remisem (pewnie przeoczyliśmy kilka przepisów).</p><p>Do zobaczenia na konwentach i różnych spotkaniach, i oby za jakiś czas również Będzinie.</p>",
             dateFrom: new Date(2017, 5, 27),
             dateTo: new Date(2017, 5, 27),
             players: [
@@ -588,8 +520,7 @@ export class AlbumsService {
                 },
             ],
             title: "Tczew1627",
-            description: "",
-            shortDescription: "",
+            description: "",            
             dateFrom: new Date(2018, 4, 8),
             dateTo: new Date(2018, 4, 8),
             players: [
@@ -769,13 +700,13 @@ export class AlbumsService {
                 },
             ],
             title: "Kraków 22.10.2016",
-            description: "",
-            shortDescription: "",
+            description: "",            
             dateFrom: new Date(2016, 10, 22),
             dateTo: new Date(2016, 10, 22),
             players: [],
             publishingHouse: { id: null, name: "", linkToLogo: "" },
             albumTypes: [
+                { id: 1, name: "Album zdjęć" },
                 { id: 3, name: "Relacja z konwentu" }
             ],
             albumMiniaturePicture: {
@@ -1012,13 +943,13 @@ export class AlbumsService {
                 }
             ],
             title: "Kraków 06-08.04.2018",
-            description: "",
-            shortDescription: "",
+            description: "",            
             dateFrom: new Date(2018, 4, 6),
-            dateTo: new Date(2018, 4, 6),
+            dateTo: new Date(2018, 4, 8),
             players: [],
             publishingHouse: { id: null, name: "", linkToLogo: "" },
             albumTypes: [
+                { id: 1, name: "Album zdjęć" },
                 { id: 3, name: "Relacja z konwentu" }
             ],
             albumMiniaturePicture: {
@@ -1051,49 +982,6 @@ export class AlbumsService {
     ];
 
     constructor() {
-        this.albums = this.allAlbums;
-        this.filteredAlbums = this.allAlbums;
-    }
-
-    performFilter(searchValue: string, searchAlbumType: number, searchPublishingHouse: number, searchPlayer: number, searchStartDate: Date, searchEndDate: Date): Album[] {
-        let tempAlbums: Album[] = this.albums;
-        if (searchValue) {
-            tempAlbums = tempAlbums.filter(
-                (content: Album) =>
-                    content.title.toLocaleLowerCase().indexOf(searchValue.toLocaleLowerCase()) !== -1
-            );
-        }
-        if (searchAlbumType) {
-            tempAlbums = tempAlbums.filter(
-                (content: Album) =>
-                    content.albumTypes.some(item => item.id == searchAlbumType)
-            );               
-        }
-        if (searchPublishingHouse) {
-            tempAlbums = tempAlbums.filter(
-                (content: Album) =>
-                    content.publishingHouse.id == searchPublishingHouse
-            );
-        }
-        if (searchPlayer) {
-            tempAlbums = tempAlbums.filter(
-                (content: Album) =>
-                    content.players.some(item => item.id == searchPlayer)
-            );
-        }
-        if (searchStartDate) {
-            tempAlbums = tempAlbums.filter(
-                (content: Album) =>
-                    content.dateFrom >= searchStartDate
-            );
-        }
-        if (searchEndDate) {
-            tempAlbums = tempAlbums.filter(
-                (content: Album) =>
-                    content.dateTo <= searchEndDate
-            );
-        }
-        return tempAlbums
     }    
 
     getAllAlbums(): Observable<Album[]> {
